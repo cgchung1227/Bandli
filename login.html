@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login&Signup</title>
+    <link rel="icon" type="image/png" href="./img/logo-small-03.png">
+    <link rel="stylesheet" href="./css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Black+Ops+One&family=Rubik+Iso&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* header */
+        #logo {
+            max-width: 100%;
+            width: 200px;
+            margin-top: 8px;
+
+        }
+
+        .navli {
+            display: flex;
+            margin-top: 24px;
+            margin-right: 24px;
+
+        }
+
+        li a {
+            padding: 20px;
+            color: #fff;
+            text-decoration: none;
+
+        }
+
+        .navli li a:hover {
+            background-color: #AAFCEB;
+            color: #171717;
+        }
+
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #171717;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 0 4%;
+
+        }
+
+        .toggle-line {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+
+        .navbar-toggle {
+            margin-top: 20px;
+            margin-right: 20px;
+            display: none;
+            cursor: pointer;
+
+        }
+
+        .navbar-menu {
+            display: none;
+        }
+
+        .navbar-menu.active {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 40px;
+            margin-bottom: 40px;
+
+        }
+
+        .icon {
+            width: 56px;
+            background-color: #d1faf2;
+            border-radius: 100px;
+            margin: 24px;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rights>p {
+            text-align: center;
+            color: #777;
+            margin-bottom: 24px;
+        }
+
+
+        @media (max-width:768px) {
+            .navli {
+                display: none;
+            }
+
+            .navbar-toggle {
+                display: block;
+                background-color: #171717;
+
+            }
+
+            .navbar-menu {
+                background-color: #171717;
+                margin: 20px;
+            }
+
+            .navbar-menu li {
+                margin: 8px;
+
+            }
+
+            .navbar-menu li :hover {
+                color: #1ABC9C;
+            }
+
+
+
+            .navbar-toggle.active .toggle-line:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1><a href="#"><img src="./img/logo-02.png" alt="Logo" id="logo"></a></h1>
+        <div class="nav">
+            <ul class="navli">
+                <li><a href="./ticket.html">演出資訊</a></li>
+                <li><a href="./exchange.html">票卷交換</a></li>
+                <li><a href="#">登入</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="./ticket.html">演出資訊</a></li>
+                <li><a href="./exchange.html">票卷交換</a></li>
+                <li><a href="#">登入</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <div class="contact">
+            <ul class="social">
+                <li class="FB"><img class="icon" src="./img/icon/icon-fb.png"></li>
+                <li class="IG"><img class="icon" src="./img/icon/icon-ig-03.png"></li>
+                <li class="EMail"><img class="icon" src="./img/icon/icon-email.png"></li>
+            </ul>
+            <div class="rights">
+                <p>Copyright 2023 by Band曆.</p>
+                <p>All Rights Reserved.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // 切換漢堡選單的狀態
+
+        document.querySelector('.navbar-toggle').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.navbar-menu').classList.toggle('active');
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Band曆-演出資訊</title>
+    <link rel="icon" type="image/png" href="./img/logo-small-03.png">
+    <link rel="stylesheet" href="./css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Black+Ops+One&family=Rubik+Iso&display=swap"
+        rel="stylesheet">
+    <style>
+        .card {
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 90%;
+        }
+
+
+        .item {
+            width: 240px;
+            /* padding-inline: 36px; */
+            color: #fff;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 24px;
+        }
+
+        .item::after {
+            content: '';
+            position: absolute;
+            background: #1b1b1b;
+            inset: 0;
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .item::before {
+            content: '';
+            position: absolute;
+            box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.9);
+            inset: -1px 0 -1px 0;
+            background: linear-gradient(95deg, #a45def, #1985f8, #42ffc3, #f6f04d);
+            z-index: -2;
+            border-radius: 20px;
+
+        }
+
+        .item,
+        .item::before {
+            transition: 0.3s ease-in-out;
+        }
+
+        .item:hover::before {
+            filter: blur(5px);
+            inset: -5px;
+        }
+
+        .item::before,
+        .item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        .itemjpg>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        .itemjpg {
+            width: 240px;
+            height: 60%;
+            border-radius: 20px 20px 0px 0px;
+
+        }
+
+        .date {
+            font-size: 12px;
+            color: #777;
+        }
+
+        p,
+        h3 {
+            padding: 1rem;
+            color: white;
+        }
+
+        /* header */
+        #logo {
+            max-width: 100%;
+            width: 200px;
+            margin-top: 8px;
+
+        }
+
+        .navli {
+            display: flex;
+            margin-top: 24px;
+            margin-right: 24px;
+
+        }
+
+        li a {
+            padding: 20px;
+            color: #fff;
+            text-decoration: none;
+
+        }
+
+        .navli li a:hover {
+            background-color: #AAFCEB;
+            color: #171717;
+        }
+
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #171717;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 0 4%;
+
+        }
+
+        .toggle-line {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+
+        .navbar-toggle {
+            margin-top: 20px;
+            margin-right: 20px;
+            display: none;
+            cursor: pointer;
+
+        }
+
+        .navbar-menu {
+            display: none;
+        }
+
+        .navbar-menu.active {
+            display: block;
+        }
+
+
+
+        @media (max-width:768px) {
+            .navli {
+                display: none;
+            }
+
+            .navbar-toggle {
+                display: block;
+                background-color: #171717;
+
+            }
+
+            .navbar-menu {
+                background-color: #171717;
+                margin: 20px;
+            }
+
+            .navbar-menu li {
+                margin: 8px;
+
+            }
+
+            .navbar-menu li :hover {
+                color: #1ABC9C;
+            }
+
+
+
+            .navbar-toggle.active .toggle-line:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .tag-li {
+                font-size: 12px;
+            }
+
+            .tag-search {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .search-bar {
+                padding-top: 12px;
+
+            }
+
+            .item {
+                width: 350px;
+                margin: auto;
+                margin-top: 48px;
+            }
+
+            .itemjpg {
+                width: 100%;
+                height: 200px;
+            }
+
+            .itemjpg>img {
+                width: 100%;
+                height: 200px;
+            }
+
+        }
+
+        /* tab */
+
+        .tab {
+            margin-bottom: 80px;
+        }
+
+        .tablink {
+            background-color: #171717;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 16px;
+            width: 25%;
+        }
+
+        h1 {
+            font-size: 40px;
+        }
+
+        /* Change background color of buttons on hover */
+        .tablink:hover {
+            background-color: #777;
+        }
+
+        /* Set default styles for tab content */
+        .tabcontent {
+            color: #171717;
+            font-size: large;
+            display: none;
+            padding: 50px;
+            text-align: center;
+        }
+
+        /* Style each tab content individually */
+        #Festival {
+            background-image: url(./img/01-01.png);
+        }
+
+        #concert {
+            background-image: url(./img/EA12400B-8A12-4983-80E9-3D7AFFC72035_1_105_c.png);
+        }
+
+        #electronic {
+            background-image: url(./img/A78B75AE-B686-404C-B0D0-1BEB5E7589C0_1_105_c.png);
+        }
+
+        #exhibition {
+            background-image: url(./img/38C8DEAE-5D5E-4BD4-8220-E8D0CD0B83A6_1_105_c.png);
+        }
+
+        /* tag */
+
+        .tag-ul {
+            display: flex;
+        }
+
+        .tag-li {
+            color: #fff;
+            margin-right: 24px;
+            border: 1px solid #777;
+            padding: 8px;
+            border-radius: 20px;
+        }
+
+        .tag-li :hover {
+            color: #1ABC9C;
+
+        }
+
+        .tag-search {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px;
+            align-items: center;
+        }
+
+
+        input {
+            border-radius: 20px;
+            margin-right: 8px;
+            width: 70%;
+            height: 32px;
+            padding: 4px 12px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .tabp {
+            color: whitesmoke;
+            width: 300px;
+            margin: auto;
+            font-size: 24px;
+            font-family: 'Audiowide', cursive;
+        }
+
+
+        .footer {
+            margin-top: 40px;
+            margin-bottom: 40px;
+
+        }
+
+        .icon {
+            width: 56px;
+            background-color: #d1faf2;
+            border-radius: 100px;
+            margin: 24px;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rights>p {
+            text-align: center;
+            color: #777;
+            margin-bottom: 24px;
+        }
+
+        .Search {
+            background-color: #1ABC9C;
+            border-radius: 20px;
+            border-style: none;
+            padding: 4px 12px;
+
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="header">
+        <h1><a href="./homepage copy.html"><img src="./img/logo-02.png" alt="Logo" id="logo"></a></h1>
+        <div class="nav">
+            <ul class="navli">
+                <li><a href="./ticket.html">演出資訊</a></li>
+                <li><a href="./exchange.html">票卷交換</a></li>
+                <li><a href="#">登入</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="./ticket.html">演出資訊</a></li>
+                <li><a href="./exchange.html">票卷交換</a></li>
+                <li><a href="#">登入</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab">
+        <div id="Festival" class="tabcontent">
+            <p class="tabp">Music Festival</p>
+        </div>
+        <div id="concert" class="tabcontent">
+            <p class="tabp">Concert</p>
+        </div>
+        <div id="electronic" class="tabcontent">
+            <p class="tabp">Electronic</p>
+        </div>
+        <div id="exhibition" class="tabcontent">
+            <p class="tabp">Exhibition</p>
+        </div>
+        <a><button class="tablink" onclick="openCity('Festival', this, '#777')" id="defaultOpen">音樂祭</button></a>
+        <a><button class="tablink" onclick="openCity('concert', this, '#777')">演唱會</button></a>
+        <a><button class="tablink" onclick="openCity('electronic', this, '#777')">電音派對</button></a>
+        <a><button class="tablink" onclick="openCity('exhibition', this, '#777')">展覽/講座</button></a>
+    </div>
+
+    <div class="tag-search">
+        <div class="tag">
+            <ul class="tag-ul">
+                <li class="tag-li"><a>北部</a></li>
+                <li class="tag-li"><a>中部</a></li>
+                <li class="tag-li"><a>南部</a></li>
+                <li class="tag-li"><a>其他</a></li>
+            </ul>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="">
+            <button type="submit" class="Search">Search</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <div class="item">
+                <div class="itemjpg"><img src="./img/001.jpg"></div>
+                <h3><a href="./buying.html">被遺忘的遐想 — deca joins 2023 Tour 台中場</a></h3>
+                <p class="date">2023/03/02(四) 19:00 Legacy Taichung 傳 音樂展演空間</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/非人.jpg"></div>
+                <h3>非人物種 2023 《漫長的告別》初夏小巡演－台北場</h3>
+                <p class="date">2023/06/17(六) 20:00 ~ 22:00 樂悠悠之口光復南</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/vooid專場banner_large.jpg"></div>
+                <h3>Vooid 「怎麼說？懶得說。OK！」專場</h3>
+                <p class="date">2023/07/01(六) 21:00 THE WALL LIVE HOUSE</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/台秋祭KKTIX-W1200H630_large.png"></div>
+                <h3>台秋祭2023</h3>
+                <p class="date">2023/07/29(六) 12:30 ~ 2023/07/30(日) 22:00 台中驛鐵道文化園區</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/安.jpg"></div>
+                <h3>《安溥．時寐》巡迴演唱會</h3>
+                <p class="date">2023/8/5 (六) 19:30 台北流行音樂中心＿表演廳</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/KK_Vega23_940_495_large.jpg"></div>
+                <h3>2023浪人祭 | 王城龍宮・深海夜遊</h3>
+                <p class="date">2023/10/13(五) 15:00 ~ 2023/10/15(日) 22:00 觀夕平台旁大草皮</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/001.jpg"></div>
+                <h3>被遺忘的遐想 — deca joins 2023 Tour 台中場</h3>
+                <p class="date">2023/03/02(四) 19:00 Legacy Taichung 傳 音樂展演空間</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/非人.jpg"></div>
+                <h3>非人物種 2023 《漫長的告別》初夏小巡演－台北場</h3>
+                <p class="date">2023/06/17(六) 20:00 ~ 22:00 樂悠悠之口光復南</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/vooid專場banner_large.jpg"></div>
+                <h3>Vooid 「怎麼說？懶得說。OK！」專場 </h3>
+                <p class="date">2023/07/01(六) 21:00 THE WALL LIVE HOUSE</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/台秋祭KKTIX-W1200H630_large.png"></div>
+                <h3>台秋祭2023</h3>
+                <p class="date">2023/07/29(六) 12:30 ~ 2023/07/30(日) 22:00 台中驛鐵道文化園區</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/安.jpg"></div>
+                <h3>《安溥．時寐》巡迴演唱會</h3>
+                <p class="date">2023/8/5 (六) 19:30 台北流行音樂中心＿表演廳</p>
+            </div>
+            <div class="item">
+                <div class="itemjpg"><img src="./img/KK_Vega23_940_495_large.jpg"></div>
+                <h3>2023浪人祭 | 王城龍宮・深海夜遊</h3>
+                <p class="date">2023/10/13(五) 15:00 ~ 2023/10/15(日) 22:00 觀夕平台旁大草皮</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="footer">
+        <div class="contact">
+            <ul class="social">
+                <li class="FB"><img class="icon" src="./img/icon/icon-fb.png"></li>
+                <li class="IG"><img class="icon" src="./img/icon/icon-ig-03.png"></li>
+                <li class="EMail"><img class="icon" src="./img/icon/icon-email.png"></li>
+            </ul>
+            <div class="rights">
+                <p>Copyright 2023 by Band曆.</p>
+                <p>All Rights Reserved.</p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // 切換漢堡選單的狀態
+
+        document.querySelector('.navbar-toggle').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.navbar-menu').classList.toggle('active');
+        });
+
+        // tab
+        function openCity(cityName, elmnt, color) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+
+            // Show the specific tab content
+            document.getElementById(cityName).style.display = "block";
+
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.backgroundColor = color;
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+
+</html>

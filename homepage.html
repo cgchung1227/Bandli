@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Band曆</title>
+    <link rel="icon" type="image/png" href="./img/logo-small-03.png">
+    <link rel="stylesheet" href="./css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Black+Ops+One&family=Rubik+Iso&display=swap"
+        rel="stylesheet">
+    <style>
+        #logo {
+            max-width: 100%;
+            width: 200px;
+            margin-top: 8px;
+
+        }
+
+        .navli {
+            display: flex;
+            margin-top: 24px;
+            margin-right: 24px;
+
+        }
+
+        li a {
+            padding: 20px;
+            color: #fff;
+            text-decoration: none;
+
+        }
+
+        .navli li a:hover {
+            background-color: #AAFCEB;
+            color: #171717;
+        }
+
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #171717;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 0 4%;
+
+        }
+
+
+        /* .container {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: -180px;
+        } */
+
+        .activity-items {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            padding-top: 20%;
+        }
+
+
+        .actli {
+            background-color: #AAFCEB;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 20px 10px;
+            box-shadow: 2px 2px 4px rgba(26, 188, 156, 1);
+        }
+
+        .actli:hover {
+            background-image: url(./img/banner-2.png);
+            outline-color: transparent;
+            outline-style: solid;
+
+        }
+
+        .toggle-line {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+
+        .navbar-toggle {
+            margin-top: 20px;
+            margin-right: 20px;
+            display: none;
+            cursor: pointer;
+
+        }
+
+        .navbar-menu {
+            display: none;
+        }
+
+        .navbar-menu.active {
+            display: block;
+        }
+
+        .gallery-container {
+            width: 100%;
+        }
+
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-auto-flow: dense;
+            justify-content: center;
+        }
+
+        .gallery>img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery_img-1x1 {
+            grid-column-end: span 1;
+            grid-row-end: span 1;
+            aspect-ratio: 1 / 1;
+        }
+
+        .gallery_img-2x1 {
+            grid-column-end: span 2;
+            grid-row-end: span 1;
+            aspect-ratio: 2 / 1;
+        }
+
+        .gallery_img-2x2 {
+            grid-column-end: span 2;
+            grid-row-end: span 2;
+            aspect-ratio: 2 / 2;
+        }
+
+        .gallery_img-1x2 {
+            grid-column-end: span 1;
+            grid-row-end: span 2;
+            aspect-ratio: 1 / 2;
+        }
+
+        .gallery>img:hover {
+            opacity: 1;
+        }
+
+        .gallery:hover>img:not(:hover) {
+            opacity: 0.8;
+            filter: grayscale(1);
+        }
+
+        .special {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            ;
+        }
+
+        h3 {
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Audiowide', cursive;
+        }
+
+
+        h2 {
+            color: white;
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-family: 'Audiowide', cursive;
+
+        }
+
+        .icon {
+            width: 56px;
+            background-color: #d1faf2;
+            border-radius: 100px;
+            margin: 24px;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rights>p {
+            text-align: center;
+            color: #777;
+            margin-bottom: 24px;
+
+        }
+
+        .footer {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .hero {
+            position: relative;
+            height: 120vh;
+            display: grid;
+            overflow-y: hidden;
+        }
+
+        .hero_title {
+            margin-inline: auto;
+            margin-top: 35vh;
+            z-index: 0;
+        }
+
+
+        .hero_bg {
+            position: absolute;
+            height: auto;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .bg_people {
+            z-index: 1;
+        }
+
+
+
+        .card-slider {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .card-list {
+            display: flex;
+            height: 300px;
+            white-space: nowrap;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+
+        .card-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+            width: 200px;
+            height: 100%;
+            margin-left: 24px;
+        }
+
+        .card-list .card:last-child {
+            margin-right: 0;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card-slider:hover .arrow {
+            opacity: 1;
+        }
+
+
+        .arrow-left {
+            left: 10px;
+        }
+
+        .arrow-right {
+            right: 10px;
+        }
+
+        h4 {
+            color: white;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 4px;
+        }
+
+        p {
+            color: white;
+            font-size: 12px;
+            font-weight: 100;
+        }
+
+        .card-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-left>img {
+            width: 160px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .claendar {
+            margin-top: -100px;
+        }
+
+        .title {
+            color: #1ABC9C;
+            font-size: 30px;
+            font-family: 'Audiowide';
+            margin-left: 3%;
+            margin-top: -20px;
+        }
+
+        hr {
+            width: 80%;
+            border-color: #1ABC9C;
+            margin-right: 18%;
+            margin-bottom: 48px;
+        }
+
+        .data-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .data-tooltip::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 24px;
+            background-color: #1ABC9C;
+            color: #fff;
+            border-radius: 20px;
+            font-size: 14px;
+            width: 80px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .data-tooltip:hover::before {
+            opacity: 1;
+            visibility: visible;
+
+        }
+
+
+
+
+
+        @media (max-width:768px) {
+            .navli {
+                display: none;
+            }
+
+            .navbar-toggle {
+                display: block;
+                background-color: #171717;
+
+            }
+
+            .navbar-menu {
+                background-color: #171717;
+                margin: 20px;
+            }
+
+            .navbar-menu li {
+                margin: 8px;
+
+            }
+
+            .navbar-menu li :hover {
+                color: #1ABC9C;
+            }
+
+
+
+            .navbar-toggle.active .toggle-line:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-auto-flow: dense;
+            }
+
+            .gallery_img-2x2 {
+                grid-column-end: span 1;
+                grid-row-end: span 1;
+                aspect-ratio: 1 / 2;
+            }
+
+            .gallery_img-2x1 {
+                grid-column-end: span 1;
+                grid-row-end: span 1;
+                aspect-ratio: 2 / 1;
+
+            }
+
+            .hero_bg {
+                height: 80%;
+                object-fit: cover;
+            }
+
+
+
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="big-bg" id="home">
+
+        <div class="header">
+            <h1><a href="#"><img src="./img/logo-02.png" alt="Logo" id="logo"></a></h1>
+            <div class="nav">
+                <ul class="navli">
+                    <li><a href="./ticket.html">演出資訊</a></li>
+                    <li><a href="./exchange.html">票卷交換</a></li>
+                    <li><a href="#">登入</a></li>
+                </ul>
+                <div class="navbar-toggle">
+                    <div class="toggle-line"></div>
+                    <div class="toggle-line"></div>
+                    <div class="toggle-line"></div>
+                </div>
+                <ul class="navbar-menu">
+                    <li><a href="./ticket.html">演出資訊</a></li>
+                    <li><a href="./exchange.html">票卷交換</a></li>
+                    <li><a href="#">登入</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="hero">
+            <img src="./img/bg01.png" class="hero_bg">
+            <img src="./img/bg02.png" class="hero_bg bg_people">
+            <h2 class="hero_title">Music, change your life.</h2>
+        </div>
+
+    </div>
+
+
+    <div class="title">WHAT'S NEW</div>
+    <hr>
+    <div class="card-slider">
+        <div class="card-list">
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/351754498_193233006618134_3304455562255304158_n.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>傷心欲絕｜當代電影大師</h4>
+                    <p> 07/09 20:00 Legacy Taipei</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/003.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>Deca Joins</h4>
+                    <p>2023 “CANCELLED" TOUR</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/008.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>拍謝少年</h4>
+                    <p>'來來來'演唱會</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/007.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>傷心欲絕</h4>
+                    <p>2023 巡迴場次</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/004.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>Deca Joins</h4>
+                    <p>2023 “CANCELLED" TOUR</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/002.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>午夜乒乓</h4>
+                    <p>09/20 19:00 The wall</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/006.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>傷心欲絕</h4>
+                    <p>06/30 帶走了一手啤酒</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/009.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>2023 大港開唱</h4>
+                    <p>首波陣容釋出</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-left">
+                    <img src="./img/005.jpg">
+                </div>
+                <div class="card-right">
+                    <h4>傷心欲絕</h4>
+                    <p>我愛您</p>
+                </div>
+            </div>
+            <div class="arrow arrow-left">&larr;</div>
+            <div class="arrow arrow-right">&rarr;</div>
+        </div>
+    </div>
+
+    <div class="claendar">
+        <div class="month">
+            <ul>
+                <li class="prev1">&#10094;</li>
+                <li class="next1">&#10095;</li>
+                <li>
+                    <span style="font-family:'Audiowide', cursive ;">August Band</span> 曆<br>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="weekdays">
+            <li>Mo</li>
+            <li>Tu</li>
+            <li>We</li>
+            <li>Th</li>
+            <li>Fr</li>
+            <li>Sa</li>
+            <li>Su</li>
+        </ul>
+
+        <ul class="days">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li data-tooltip="傷心欲絕  19:00 Legacy Taipei" class="data-tooltip"><span class="active">10</span></li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li>20</li>
+            <li>21</li>
+            <li data-tooltip="2023 大港開唱" class="data-tooltip"><span class="active">22</span></li>
+            <li>23</li>
+            <li>24</li>
+            <li>25</li>
+            <li>26</li>
+            <li>27</li>
+            <li>28</li>
+            <li>29</li>
+            <li data-tooltip="午夜乒乓 20:00 The wall" class="data-tooltip"><span class="active">30</span></li>
+            <li data-tooltip="鄭宜農巡迴演唱會 台北流行音樂中心" class="data-tooltip"><span class="active">31</span></li>
+        </ul>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+    <div class="special">
+        <h3>NEW RELEASE</h3>
+    </div>
+    <div class="gallery-container">
+        <div class="gallery">
+            <img src="./img/001.jpg" class="gallery_img-1x1">
+            <img src="./img/002.jpg" class="gallery_img-2x2">
+            <img src="./img/003.jpg" class="gallery_img-2x2">
+            <img src="./img/004.jpg" class="gallery_img-1x2">
+            <img src="./img/005.jpg" class="gallery_img-1x2">
+            <img src="./img/006.jpg" class="gallery_img-2x1">
+            <img src="./img/007.jpg" class="gallery_img-2x1">
+            <img src="./img/008.jpg" class="gallery_img-1x1">
+            <img src="./img/009.jpg" class="gallery_img-2x1">
+            <img src="./img/010.jpg" class="gallery_img-1x1">
+            <img src="./img/001.jpg" class="gallery_img-1x1">
+            <img src="./img/002.jpg" class="gallery_img-2x2">
+            <img src="./img/004.jpg" class="gallery_img-1x2">
+            <img src="./img/005.jpg" class="gallery_img-1x2">
+            <img src="./img/006.jpg" class="gallery_img-2x1">
+            <img src="./img/007.jpg" class="gallery_img-2x1">
+            <img src="./img/008.jpg" class="gallery_img-1x1">
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="contact">
+            <ul class="social">
+                <li class="FB"><img class="icon" src="./img/icon/icon-fb.png"></li>
+                <li class="IG"><img class="icon" src="./img/icon/icon-ig-03.png"></li>
+                <li class="EMail"><img class="icon" src="./img/icon/icon-email.png"></li>
+            </ul>
+            <div class="rights">
+                <p>Copyright 2023 by Band曆.</p>
+                <p>All Rights Reserved.</p>
+            </div>
+        </div>
+
+    </div>
+    <script>
+
+        if (window.innerWidth >= 980) {
+            window.addEventListener('scroll', () => {
+                const heroTitle = document.querySelector('.hero_title');
+                heroTitle.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+            });
+
+        }
+
+        // let slideIndex = 1;
+        // showSlides(slideIndex);
+
+        // // Next/previous controls
+        // function plusSlides(n) {
+        //     showSlides(slideIndex += n);
+        // }
+
+        // // Thumbnail image controls
+        // function currentSlide(n) {
+        //     showSlides(slideIndex = n);
+        // }
+
+        // function showSlides(n) {
+        //     let i;
+        //     let slides = document.getElementsByClassName("mySlides");
+        //     let dots = document.getElementsByClassName("dot");
+        //     if (n > slides.length) { slideIndex = 1 }
+        //     if (n < 1) { slideIndex = slides.length }
+        //     for (i = 0; i < slides.length; i++) {
+        //         slides[i].style.display = "none";
+        //     }
+        //     for (i = 0; i < dots.length; i++) {
+        //         dots[i].className = dots[i].className.replace(" active", "");
+        //     }
+        //     slides[slideIndex - 1].style.display = "block";
+        //     dots[slideIndex - 1].className += " active";
+
+        // }
+        // 切換漢堡選單的狀態
+
+        document.querySelector('.navbar-toggle').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.navbar-menu').classList.toggle('active');
+        });
+
+        //日曆
+
+        const tooltips = document.querySelectorAll('[data-tooltip]');
+
+        tooltips.forEach((tooltip) => {
+            const tooltipContent = tooltip.dataset.tooltip;
+            const tooltipElement = document.createElement('span');
+            tooltipElement.classList.add('tooltiptext');
+            // tooltipElement.innerText = tooltipContent;
+            tooltip.appendChild(tooltipElement);
+        });
+
+
+
+        // scroll
+
+        const cardSlider = document.querySelector('.card-slider');
+        const cardList = document.querySelector('.card-list');
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+
+        cardSlider.addEventListener('mouseenter', () => {
+            arrowLeft.style.opacity = 1;
+            arrowRight.style.opacity = 1;
+        });
+
+        cardSlider.addEventListener('mouseleave', () => {
+            arrowLeft.style.opacity = 0;
+            arrowRight.style.opacity = 0;
+        });
+
+        arrowLeft.addEventListener('click', () => {
+            cardList.scrollBy({
+                left: -cardSlider.clientWidth,
+                behavior: 'smooth'
+            });
+        });
+
+        arrowRight.addEventListener('click', () => {
+            cardList.scrollBy({
+                left: cardSlider.clientWidth,
+                behavior: 'smooth'
+            });
+        });
+
+    </script>
+</body>
+
+</html>

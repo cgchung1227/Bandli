@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./img/logo-small-03.png">
+    <title>Band曆-購買頁面</title>
+    <link rel="stylesheet" href="./css.css">
+    <style>
+        /* header */
+        #logo {
+            max-width: 100%;
+            width: 200px;
+            margin-top: 8px;
+
+        }
+
+        .navli {
+            display: flex;
+            margin-top: 24px;
+            margin-right: 24px;
+
+        }
+
+        li a {
+            padding: 20px;
+            color: #fff;
+            text-decoration: none;
+
+        }
+
+        .navli li a:hover {
+            background-color: #AAFCEB;
+            color: #171717;
+        }
+
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #171717;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 0 4%;
+
+        }
+
+        .toggle-line {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+
+        .navbar-toggle {
+            margin-top: 20px;
+            margin-right: 20px;
+            display: none;
+            cursor: pointer;
+
+        }
+
+        .navbar-menu {
+            display: none;
+        }
+
+        .navbar-menu.active {
+            display: block;
+        }
+
+
+
+        .showimg>img {
+            width: 100%;
+            margin: 24px;
+            border-radius: 20px;
+
+        }
+
+
+        .showcontainer {
+            max-width: 80%;
+            margin: auto;
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+        }
+
+        .showimg {
+            flex: 2;
+            padding: 24px;
+        }
+
+        .showcontent {
+            flex: 3;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        .button {
+            padding: 24px;
+            margin: 8px;
+        }
+
+        button {
+            margin: 4px;
+            height: 36px;
+            font-size: 18px;
+            width: 120px;
+            background-color: #1ABC9C;
+            border-radius: 20px;
+            border-style: none;
+
+
+        }
+
+        button:hover {
+            background-color: #171717;
+            color: #1ABC9C;
+        }
+
+        input {
+            width: 60px;
+            height: 36px;
+            margin: 6px;
+            border-radius: 20px;
+            border-style: none;
+            text-align: center;
+        }
+
+        .showcontent>h3 {
+            color: whitesmoke;
+            padding: 24px;
+            margin: 4px;
+            font-size: 20px;
+        }
+
+        .showcontent>p {
+            color: whitesmoke;
+            padding-left: 24px;
+            padding-right: 24px;
+            margin: 4px;
+            font-size: 14px;
+        }
+
+        .showdesc {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            width: 80%;
+            margin: auto;
+            margin-top: 40px;
+        }
+
+        .desc>p {
+            color: whitesmoke;
+            padding: 24px;
+            font-weight: 200;
+
+        }
+
+        .desc>h4 {
+            color: white;
+            padding: 24px 0 12px 24px;
+            font-size: 16px;
+        }
+
+        .desc {
+            padding: 24px;
+        }
+
+        .icon {
+            width: 56px;
+            background-color: #d1faf2;
+            border-radius: 100px;
+            margin: 24px;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rights>p {
+            text-align: center;
+            color: #777;
+            margin-bottom: 24px;
+
+        }
+
+        .footer {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            background-color: #171717;
+        }
+
+        .map {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .showbg{
+            background-image: url(./img/001-b拷貝.png);
+            background-size: cover;
+        }
+
+        .showcontainer , .showdesc {
+            backdrop-filter:blur(20px);
+        }
+
+
+
+        @media (max-width:768px) {
+            .navli {
+                display: none;
+            }
+
+            .navbar-toggle {
+                display: block;
+                background-color: #171717;
+
+            }
+
+            .navbar-menu {
+                background-color: #171717;
+                margin: 20px;
+            }
+
+            .navbar-menu li {
+                margin: 8px;
+
+            }
+
+            .navbar-menu li :hover {
+                color: #1ABC9C;
+            }
+
+
+
+            .navbar-toggle.active .toggle-line:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+
+            .showcontainer {
+                width: 80%;
+                margin: auto;
+                margin-top: 24px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .showimg>img {
+                width: 80%;
+                border-radius: 20px;
+
+            }
+
+            .showimg {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+
+            }
+
+            .showcontent {
+                flex: 2;
+            }
+
+            .button {
+                padding: 24px;
+                margin: 4px;
+            }
+
+            input {
+                width: 50px;
+                height: 36px;
+            }
+
+            button {
+                width: 100px;
+                font-size: 16px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1><a href="./homepage copy.html"><img src="./img/logo-02.png" alt="Logo" id="logo"></a></h1>
+        <div class="nav">
+            <ul class="navli">
+                <li><a href="./ticket.html">演出資訊</a></li>
+                <li><a href="./exchange.html">票卷交換</a></li>
+                <li><a href="#">登入</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="./ticket.html">演出資訊</a></li>
+                <li><a href="./exchange.html">票卷交換</a></li>
+                <li><a href="#">登入</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="showbg">
+        <br>
+        <br>
+        <div class="showcontainer">
+            <div class="showimg">
+                <img src="./img/001.jpg">
+            </div>
+            <div class="showcontent">
+                <h3>被遺忘的遐想 — deca joins 2023 Tour 台中場</h3>
+                <p>2023/03/02(周四) 19:00(+0800)</p>
+                <p>Legacy Taichung 傳 音樂展演空間 / 台中市西屯區安和路117號</p>
+                <p>Airhead Records. 空氣腦唱片</p>
+                <div class="button">
+                    <input type="number" value="1">
+                    <button>放入購物車</button>
+                    <button>直接購買</button>
+                </div>
+            </div>
+        </div>
+        <div class="showdesc">
+            <div class="desc">
+                <h4>活動內容</h4>
+                <p>
+                    我們的遐想是從樂曲啟始，以畫幅終結。我想在那樣的聲音裡被包裹，再把我的全身奉獻進一封不會被開啟的信。我把信號拋擲在天空的一側，我不知道另一側的你是否會收下我微弱的電波，但是我就是在那。擱置著，掛留著，懸宕或是漂浮的一片海洋，寬容的介質是我的血液；金屬是能敲擊出音律的礦藏，是關於變幻的、季節性的，如果它們都震顫成波動，可以感應，也可以吸收。我願意讓你在我身體裡面生活，從你老去開始，直到你孵化；在重生的終點開始，在死亡作為樂音先現的時候結束，並讓他自然而然。
+                    我看見了一條路，有危險在前方埋伏，但是我仍想要往前走。我無法預視的終點是以負片的樣式召喚我，但是我無心關照。
+                    我被新鮮的空氣充滿，被打開，然後騰空，雙腳離地。未曾看見的幻像幾乎要成為真實的顏色，如同尖銳的燈泡柔軟的那一面摩搓著我已失去理智的瞳孔。
+                    儘管如此，我始終在移動，如果停止，血液就將要凝固，我竭盡可能避免這種有如搔癢般的硬化。我們在這共享這樣的一個生命。
+                </p>
+                <p>
+                    被遺忘的遐想 — deca joins 2023 Tour 台中場<br>
+                    日期：2023-03-02 (Thu.)<br>
+                    時間：OPEN: 19:00 / START: 20:00<br>
+                    地點：Legacy Taichung<br>
+                    票價：預售1200 / 現場1500
+                </p>
+                <p>
+                    退票請洽 KKTIX：<br>
+                    客服專線：+886-2-2752-2836<br>
+                    客服傳真：+886-2-2777-3086<br>
+                    服務時間：週一至週五 09:30-12:30 / 13:30-18:30 (國定假日暫停服務)<br>
+                    客服信箱：support@kktix.com<br>
+                    身心障礙者與陪同者進場時敬請攜帶有效證件，須同時憑身心障礙證明驗證進場。未帶證件、資格不符者、或非本人者，主辦單位得拒絕其入場。
+                </p>
+            </div>
+            <div class="map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3639.8621907966285!2d120.62099361498944!3d24.176565384380947!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34691601d2657983%3A0x5d5193db5f6f405a!2zTGVnYWN5IFRhaWNodW5nIOWCsyDpn7PmqILlsZXmvJTnqbrplpM!5e0!3m2!1szh-TW!2stw!4v1687527970838!5m2!1szh-TW!2stw"
+                    width="800" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <br><br><br><br><br><br><br><br>
+        <br>
+    </div>
+
+    <div class="footer">
+        <div class="contact">
+            <ul class="social">
+                <li class="FB"><img class="icon" src="./img/icon/icon-fb.png"></li>
+                <li class="IG"><img class="icon" src="./img/icon/icon-ig-03.png"></li>
+                <li class="EMail"><img class="icon" src="./img/icon/icon-email.png"></li>
+            </ul>
+            <div class="rights">
+                <p>Copyright 2023 by Band曆.</p>
+                <p>All Rights Reserved.</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // 切換漢堡選單的狀態
+
+        document.querySelector('.navbar-toggle').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.navbar-menu').classList.toggle('active');
+        });
+
+    </script>
+
+</body>
+
+</html>

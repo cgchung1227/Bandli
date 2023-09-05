@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./img/logo-small-03.png">
+    <title>Band曆-票卷交換</title>
+    <link rel="stylesheet" href="./css.css">
+    <link rel="stylesheet" href="./css.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Black+Ops+One&family=Rubik+Iso&display=swap"
+        rel="stylesheet">
+    <style>
+        /* header */
+        #logo {
+            max-width: 100%;
+            width: 200px;
+            margin-top: 8px;
+
+        }
+
+        .navli {
+            display: flex;
+            margin-top: 24px;
+            margin-right: 24px;
+
+        }
+
+        li a {
+            padding: 20px;
+            color: #fff;
+            text-decoration: none;
+
+        }
+
+        .navli li a:hover {
+            background-color: #AAFCEB;
+            color: #171717;
+        }
+
+
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #171717;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            padding: 0 4%;
+
+        }
+
+        .toggle-line {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin-bottom: 5px;
+        }
+
+        .navbar-toggle {
+            margin-top: 20px;
+            margin-right: 20px;
+            display: none;
+            cursor: pointer;
+
+        }
+
+        .navbar-menu {
+            display: none;
+        }
+
+        .navbar-menu.active {
+            display: block;
+        }
+
+        .footer {
+            margin-top: 40px;
+            margin-bottom: 40px;
+
+        }
+
+        .icon {
+            width: 56px;
+            background-color: #d1faf2;
+            border-radius: 100px;
+            margin: 24px;
+        }
+
+        .social {
+            display: flex;
+            justify-content: center;
+        }
+
+        .rights>p {
+            text-align: center;
+            color: #777;
+            margin-bottom: 24px;
+        }
+
+
+        .item {
+            background-color: #777;
+            display: flex;
+            align-items: center;
+            border-radius: 20px;
+            margin: 12px;
+            padding: 8px 8px;
+        }
+
+        .iticon {
+            width: 60px;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 24px;
+        }
+
+        .tag {
+            width: 80%;
+            margin: auto;
+            display: flex;
+            flex-direction: row-reverse;
+            padding: 8px;
+
+        }
+
+        .buy {
+            background-color: #1ABC9C;
+            color: #171717;
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+
+        p {
+            margin-left: auto;
+        }
+
+        .buy{
+            display: flex;
+            align-items: center;  
+        }
+
+        .add {
+            width: 24px;
+            height: 24px;
+        }
+
+
+        .headshot {
+            border: 0;
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+
+        input {
+            border: 0;
+            color: inherit;
+            font-family: inherit;
+            font-size: 100%;
+            line-height: normal;
+            margin: 0;
+        }
+
+        /* .clearfix {
+            *zoom 1;
+        } */
+
+        /* For IE 6/7 */
+        .clearfix:before,
+        .clearfix:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix:after {
+            clear: both;
+        }
+
+        /* ---------- LIVE-CHAT ---------- */
+
+        #live-chat {
+            bottom: 0;
+            font-size: 12px;
+            right: 24px;
+            position: fixed;
+            width: 300px;
+        }
+
+        #live-chat header {
+            background: #293239;
+            border-radius: 5px 5px 0 0;
+            color: #fff;
+            cursor: pointer;
+            padding: 16px 24px;
+        }
+
+        #live-chat h4:before {
+            background: #1a8a34;
+            border-radius: 50%;
+            content: "";
+            display: inline-block;
+            height: 8px;
+            margin: 0 8px 0 0;
+            width: 8px;
+        }
+
+        #live-chat h4 {
+            font-size: 12px;
+        }
+
+        #live-chat h5 {
+            font-size: 10px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        #live-chat form {
+            padding: 24px;
+        }
+
+        #live-chat input[type="text"] {
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 8px;
+            outline: none;
+            width: 234px;
+        }
+
+        .chat-message-counter {
+            background: #e62727;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            display: none;
+            font-size: 12px;
+            font-weight: bold;
+            height: 28px;
+            left: 0;
+            line-height: 28px;
+            margin: -15px 0 0 -15px;
+            position: absolute;
+            text-align: center;
+            top: 0;
+            width: 28px;
+        }
+
+        .chat-close {
+            background: #171717;
+            border-radius: 50%;
+            color: #fff;
+            display: block;
+            float: right;
+            font-size: 10px;
+            height: 16px;
+            line-height: 16px;
+            margin: 2px 0 0 0;
+            text-align: center;
+            text-decoration: none;
+            width: 16px;
+        }
+
+        .chat {
+            background: #777;
+        }
+
+        .chat-history {
+            height: 252px;
+            padding: 8px 24px;
+            overflow-y: scroll;
+        }
+
+        .chat-message {
+            margin: 16px 0;
+            color: whitesmoke;
+        }
+
+        .chat-message img {
+            border-radius: 50%;
+            float: left;
+        }
+
+        .chat-message-content {
+            margin-left: 56px;
+            background-color: #293239;
+            padding: 12px;
+            border-radius: 20px;
+        }
+
+        .chat-time {
+            float: right;
+            font-size: 10px;
+        }
+
+        .chat-feedback {
+            margin: 0 0 0 80px;
+        }
+
+        .item:hover {
+            background-color: #AAFCEB;
+        }
+
+        .headpic {
+            height: 180px;
+            width: 100%;
+            object-fit: cover;
+            margin-bottom: 40px;
+            background-image: url(./img/006.jpg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .headpic> h2 {
+            font-size: 24px;
+            font-family: 'Audiowide', cursive;
+            color: white;
+
+
+
+        }
+
+
+
+
+
+
+
+        @media (max-width:768px) {
+            .navli {
+                display: none;
+            }
+
+            .navbar-toggle {
+                display: block;
+                background-color: #171717;
+
+            }
+
+            .navbar-menu {
+                background-color: #171717;
+                margin: 20px;
+            }
+
+            .navbar-menu li {
+                margin: 8px;
+
+            }
+
+            .navbar-menu li :hover {
+                color: #1ABC9C;
+            }
+
+
+
+            .navbar-toggle.active .toggle-line:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(2) {
+                opacity: 0;
+            }
+
+            .navbar-toggle.active .toggle-line:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1><a href="./homepage copy.html"><img src="./img/logo-02.png" alt="Logo" id="logo"></a></h1>
+        <div class="nav">
+            <ul class="navli">
+                <li><a href="./ticket.html">演出資訊</a></li>
+                <li><a href="#">票卷交換</a></li>
+                <li><a href="#">登入</a></li>
+            </ul>
+            <div class="navbar-toggle">
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+                <div class="toggle-line"></div>
+            </div>
+            <ul class="navbar-menu">
+                <li><a href="./ticket.html">演出資訊</a></li>
+                <li><a href="#">票卷交換</a></li>
+                <li><a href="#">登入</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="headpic">
+        <h2>Ticket exchange</h2>
+    </div>
+
+    <div class="tag">
+        <div class="buy">
+            <img src="./img/icon/add_FILL0_wght400_GRAD0_opsz48.png" class="add">
+            <p class="addp">我要賣票</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[售] 0630 草東沒有派對 台北場*1</h3>
+            </div>
+            <p>更新時間 0624 18:00</p>
+        </div>
+        <div class="item">
+            <img src="./img/icon/apartment_FILL0_wght400_GRAD0_opsz48.png" class="iticon">
+            <div class="content">
+                <h3>[徵] 浪人祭住宿徵室友</h3>
+            </div>
+            <p>更新時間 0624 19:00</p>
+        </div>
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[售] 8/12.13爛泥發芽1998鐵粉雙人票*1</h3>
+            </div>
+            <p>更新時間 0624 15:40</p>
+        </div>
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[徵] 傷心欲絕 當代電影大師*1</h3>
+            </div>
+            <p>更新時間 0624 11:32</p>
+        </div>
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[售] 共振月台音樂祭*2</h3>
+            </div>
+            <p>更新時間 0624 10:20</p>
+        </div>
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[售] 共振月台 早鳥$999*2張*1</h3>
+            </div>
+            <p>更新時間 0623 23:00</p>
+        </div>
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[售] 康士坦的變化球《眠月線》*1</h3>
+            </div>
+            <p>更新時間 0623 19:03</p>
+
+        </div>
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[徵] 爛泥發芽 鐵粉雙人票x1</h3>
+            </div>
+            <p>更新時間 0622 18:00</p>
+
+        </div>
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[售] 麋先生〔十年之後·浪漫之前〕*3</h3>
+            </div>
+            <p>更新時間 0622 13:00</p>
+
+        </div>
+        <div class="item">
+            <img src="./img/icon/icon-email.png" class="iticon">
+            <div class="content">
+                <h3>[售] 0630 草東沒有派對 台北場*1</h3>
+            </div>
+            <p>更新時間 0621 18:00</p>
+
+        </div>
+
+
+
+    </div>
+
+    <div id="live-chat">
+
+        <header class="clearfix">
+
+            <a href="#" class="chat-close">x</a>
+
+            <h4>私人訊息</h4>
+
+            <span class="chat-message-counter">3</span>
+
+        </header>
+
+        <div class="chat">
+
+            <div class="chat-history">
+
+                <div class="chat-message clearfix">
+
+                    <img src="./img/chahca.png" alt="" width="40" height="40" class="headshot">
+
+                    <div class="chat-message-content clearfix">
+
+                        
+                        <h5>喵喵</h5>   
+                        <p>您好，請問你的票目前售出了嗎？</p>
+                        <span class="chat-time">13:35</span>
+                        
+                    </div> <!-- end chat-message-content -->
+
+                </div> <!-- end chat-message -->
+
+
+                <div class="chat-message clearfix">
+
+                    <div class="chat-message-content clearfix">
+
+                        
+                        <h5>我</h5>
+                        
+                        <p>哈囉，目前還有喔，台中面交可以嗎？</p>
+                        <span class="chat-time">13:38</span>
+
+                    </div> <!-- end chat-message-content -->
+
+                </div> <!-- end chat-message -->
+
+
+            </div> <!-- end chat-history -->
+
+            <p class="chat-feedback">喵喵輸入訊息中..</p>
+
+            <form action="#" method="post">
+
+                <fieldset>
+
+                    <input type="text" placeholder="請輸入" autofocus>
+                    <input type="hidden">
+
+                </fieldset>
+
+            </form>
+
+        </div> <!-- end chat -->
+
+    </div> <!-- end live-chat -->
+
+    <div class="footer">
+        <div class="contact">
+            <ul class="social">
+                <li class="FB"><img class="icon" src="./img/icon/icon-fb.png"></li>
+                <li class="IG"><img class="icon" src="./img/icon/icon-ig-03.png"></li>
+                <li class="EMail"><img class="icon" src="./img/icon/icon-email.png"></li>
+            </ul>
+            <div class="rights">
+                <p>Copyright 2023 by Band曆.</p>
+                <p>All Rights Reserved.</p>
+            </div>
+        </div>
+
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+
+    <script>
+
+        // 切換漢堡選單的狀態
+
+        document.querySelector('.navbar-toggle').addEventListener('click', function () {
+            this.classList.toggle('active');
+            document.querySelector('.navbar-menu').classList.toggle('active');
+        });
+
+        (function () {
+
+            $('#live-chat header').on('click', function () {
+
+                $('.chat').slideToggle(300, 'swing');
+                $('.chat-message-counter').fadeToggle(300, 'swing');
+
+            });
+
+            $('.chat-close').on('click', function (e) {
+
+                e.preventDefault();
+                $('#live-chat').fadeOut(300);
+
+            });
+
+        })();
+
+
+    </script>
+
+
+</body>
+
+</html>
